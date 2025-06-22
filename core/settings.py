@@ -73,3 +73,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Whitenoise for static files serving on Render
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+ALLOWED_HOSTS = ['*']  # or ['django-ai-course-platform.onrender.com']
+

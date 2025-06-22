@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 {% block title %}Login{% endblock %}
 {% block content %}
-
-<h2>Login</h2>
-
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Login</button>
-</form>
-
+<div style="display: flex; justify-content: center; align-items: center; height: 80vh;">
+  <div style="width: 400px; padding: 30px; box-shadow: 0 0 15px rgba(0,0,0,0.3); border-radius: 15px; background-color: #fff;">
+    <h2 style="text-align: center; color: #FF0000;">Welcome Back!</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" style="width: 100%; padding: 10px; background-color: #FF0000; color: white; border: none; border-radius: 5px; font-size: 16px;">Login</button>
+    </form>
+    <p style="text-align: center; margin-top: 10px;">Don't have an account? <a href="{% url 'signup' %}">Signup</a></p>
+  </div>
+</div>
 {% endblock %}

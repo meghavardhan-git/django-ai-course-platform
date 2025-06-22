@@ -79,3 +79,23 @@ def mark_complete(request, course_id):
 def user_progress(request):
     progress = UserProgress.objects.filter(user=request.user)
     return render(request, 'user_progress.html', {'progress': progress})
+import csv
+import os
+from django.conf import settings
+from django.http import HttpResponse
+from .models import Course
+
+def import_courses(request):
+    csv_path = os.path.join(settings.BASE_DIR, 'recommender', 'data', 'courses.csv')
+    with open(csv_path, newline='', encoding='utf-8') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            Course.objects.get_or_create(
+                title=row['title'],
+                category=row['category'],
+                difficulty=row['difficulty'],
+                description=row['description'],
+                youtube_link=row['youtube_link'],
+                thumbnail_url=row['thumbnail_url']
+            )
+    return HttpResponse("✅ Courses imported successfully!")

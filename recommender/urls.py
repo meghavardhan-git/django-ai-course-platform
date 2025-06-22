@@ -9,4 +9,6 @@ urlpatterns = [
     path('gemini_suggest_courses/', views.gemini_suggest_courses, name='gemini_suggest_courses'),
     path('signup/', views.signup, name='signup'),
     path('my_progress/', views.user_progress, name='user_progress'),
+    path('import-courses/', views.import_courses, name='import_courses'),
+
 ]

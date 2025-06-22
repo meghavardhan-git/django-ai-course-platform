@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}My Progress{% endblock %}
+
+{% block content %}
+<h2 style="text-align:center;">My Course Progress</h2>
+
+{% if progress %}
+    <table style="width:100%; border-collapse: collapse;">
+        <tr>
+            <th style="padding: 10px; border-bottom: 1px solid #ccc;">Course</th>
+            <th style="padding: 10px; border-bottom: 1px solid #ccc;">Completed</th>
+        </tr>
+        {% for item in progress %}
+        <tr>
+            <td style="padding: 10px;">{{ item.course.title }}</td>
+            <td style="padding: 10px;">{{ item.completed }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>You have not started any courses yet.</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Recommendations{% endblock %}
+
+{% block content %}
+<h1>Recommended For You</h1>
+
+{% for course in recommended %}
+<div class="course-card" style="margin: 20px 0; padding: 15px; border: 1px solid #ddd;">
+    <h2>{{ course.title }}</h2>
+    <p>{{ course.description }}</p>
+    <a class="button" href="{% url 'course_detail' course.id %}">View Course</a>
+</div>
+{% empty %}
+<p>No recommendations available yet. Complete some courses first!</p>
+{% endfor %}
+
+<a href="{% url 'course_list' %}">← Back to Course List</a>
+{% endblock %}

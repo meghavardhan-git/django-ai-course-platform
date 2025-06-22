@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Course Recommender</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .course { margin: 10px 0; padding: 10px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Welcome {{ request.user.username }}!</h1>
+
+    <h2>Recommended Courses:</h2>
+    {% for course in recommended %}
+        <div class="course">
+            <h3>{{ course.title }}</h3>
+            <p>{{ course.description }}</p>
+            <p><strong>Category:</strong> {{ course.category }}</p>
+            <p><strong>Difficulty:</strong> {{ course.difficulty }}</p>
+        </div>
+    {% empty %}
+        <p>No recommendations found.</p>
+    {% endfor %}
+</body>
+</html>

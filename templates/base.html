@@ -3,74 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}AI Course Platform{% endblock %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             margin: 0;
-            background-color: #f5f5f5;
+            background: #f5f5f5;
             color: #333;
         }
-        header {
-            background-color: #FF0000;
+        .navbar {
+            background: #34495e;
+            padding: 15px;
             color: white;
-            padding: 20px 40px;
+            font-size: 24px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
         }
-        header a {
+        .navbar a {
             color: white;
             text-decoration: none;
-            font-weight: bold;
-            margin-left: 20px;
+            margin-left: 15px;
         }
-        main {
-            padding: 40px;
-            max-width: 1200px;
-            margin: auto;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            margin-top: 60px;
-        }
-        .btn-red {
-            background-color: #FF0000;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .btn-red:hover {
-            background-color: #cc0000;
+        .container {
+            width: 90%;
+            margin: 20px auto;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div style="font-size: 24px; font-weight: bold;">AI Course Platform</div>
-        <nav>
-            <a href="{% url 'course_list' %}">Home</a>
-            <a href="{% url 'user_progress' %}">Progress</a>
-            {% if user.is_authenticated %}
-                <a href="{% url 'logout' %}">Logout</a>
-            {% else %}
-                <a href="{% url 'login' %}">Login</a>
-            {% endif %}
-        </nav>
-    </header>
 
-    <main>
-        {% block content %}{% endblock %}
-    </main>
+<div class="navbar">
+    AI Course Platform
+    <div>
+        {% if user.is_authenticated %}
+            Welcome, {{ user.username }} |
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'signup' %}">Sign Up</a>
+        {% endif %}
+    </div>
+</div>
 
-    <footer>
-        Built with ❤️ | Django + Gemini AI + Render
-    </footer>
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+
 </body>
 </html>

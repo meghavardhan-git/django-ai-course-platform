@@ -40,7 +40,7 @@ function suggestCourses() {
 }
 </script>
 
-<!-- Search Bar -->
+<!-- Search bar -->
 <div style="display: flex; justify-content: center; margin: 40px 0;">
     <form method="get" action="{% url 'course_list' %}" style="display: flex; width: 80%; max-width: 900px;">
         <input type="text" name="search" placeholder="Search courses..." value="{{ request.GET.search }}" style="flex-grow: 1; padding: 12px 20px; font-size: 18px; border-radius: 50px 0 0 50px; border: 1px solid #ccc;">
@@ -56,8 +56,7 @@ function suggestCourses() {
 </div>
 
 <h2 style="text-align: center;">Course Search Results</h2>
-
-<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; padding: 20px;">
+<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; padding: 20px;">
     {% for course in courses %}
         <div style="border-radius: 10px; overflow: hidden; box-shadow: 0 0 15px rgba(0,0,0,0.3); background: #fff; transition: transform 0.3s ease;">
             <a href="{% url 'course_detail' course.id %}" style="text-decoration: none; color: inherit;">
@@ -81,7 +80,7 @@ function suggestCourses() {
 <hr>
 
 <h2 style="text-align: center;">Recommended Videos</h2>
-<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; padding: 20px;">
+<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; padding: 20px;">
     {% for rec in recommended_videos %}
         <div style="border-radius: 10px; overflow: hidden; box-shadow: 0 0 15px rgba(0,0,0,0.3); background: #fff;">
             <iframe width="100%" height="200" src="https://www.youtube.com/embed/{{ rec.youtube_id }}" frameborder="0" allowfullscreen></iframe>
